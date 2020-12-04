@@ -36,9 +36,9 @@
         Song nodes are sized based on playcounts, and colored by artist.</p>
     </header>
 
-    <div id="song_selection" class="control">
-      <h3>Song</h3>
-      <select id="song_select">
+    <div id="song_selection" class="control mb-2">
+      <h6>Song</h6>
+      <!-- <select id="song_select">
         <option value="call_me_al.json">You Can Call Me Al</option>
         <option value="sledgehammer_2_rounds.json">Sledgehammer</option>
         <option value="poker_face.json">Poker Face</option>
@@ -46,42 +46,42 @@
         <option value="helplessness_blues.json">Helplessness Blues</option>
         <option value="she_said.json">She Said She Said</option>
         <option value="short_skirt.json">Short Skirt, Long Jacket</option>
+      </select> -->
+      <select v-model="selected" id="song_select">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
       </select>
 
     </div>
-    <div id="controls">
-      <div id="layouts" class="control">
-        <h3>Layout</h3>
-        <a id="force" class="active">Force Directed</a>
-        <a id="radial">Artists</a>
+    <div id="controls" class="row mx-0">
+      <div id="layouts" class="control col px-0">
+        <h6>Layout</h6>
+        <a id="force" class="active btn btn-light btn-sm">Force Directed</a>
+        <a id="radial" class="btn btn-light btn-sm">Artists</a>
       </div>
-      <div id="filters" class="control">
-        <h3>Filter</h3>
-        <a id="all" class="active">All</a>
-        <a id="popular">Popular</a>
-        <a id="obscure">Obscure</a>
+      <div id="filters" class="control col px-0">
+        <h6>Filter</h6>
+        <a id="all" class="active btn btn-light btn-sm">All</a>
+        <a id="popular" class="btn btn-light btn-sm">Popular</a>
+        <a id="obscure" class="btn btn-light btn-sm">Obscure</a>
       </div>
-      <div id="sorts" class="control">
-        <h3>Sort</h3>
-        <a id="songs" class="active">Songs</a>
-        <a id="links">Links</a>
+      <div id="sorts" class="control col px-0">
+        <h6>Sort</h6>
+        <a id="songs" class="active btn btn-light btn-sm">Songs</a>
+        <a id="links" class="btn btn-light btn-sm">Links</a>
       </div>
-      <div id="search_section" class="control">
+      <div id="search_section" class="control col px-0">
         <form id="search_form" action="" method="post">
           <p class="search_title">Search <input type="text" class="text-input" id="search" value="" /></p>
         </form>
       </div>
-      <div id="main" role="main">
-        <div id="vis"></div>
-      </div>
-      <footer>
-        <p>Data from <a href="http://www.last.fm/api/show/track.getSimilar">last.fm</a>. Some songs include additional
-          links for effect.<br />Popular songs are defined as those with playcounts above the median for all songs in
-          network.</p>
 
-      </footer>
     </div>
-    <div id="chart">
+    <div id="main" role="main">
+      <div id="chart">
+      </div>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
