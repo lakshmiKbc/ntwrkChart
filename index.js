@@ -476,7 +476,7 @@
     $("#song_select").on("change", function (e) {
       var songFile;
       songFile = $(this).val();
-      return d3.json("data/" + songFile, function (json) {
+      return d3.json("http://alukafoundation.org/api/GetSongsByParent?id=" + songFile, function (json) {
         return myNetwork.updateData(json);
       });
     });

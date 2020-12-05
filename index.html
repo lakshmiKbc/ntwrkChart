@@ -66,9 +66,7 @@
       </select> -->
       <select v-model="selected" id="song_select">
         <option disabled value="">Please select one</option>
-        <option>A</option>
-        <option>B</option>
-        <option>C</option>
+        <option v-for="opt in options">{{opt}}</option>
       </select>
 
     </div>
