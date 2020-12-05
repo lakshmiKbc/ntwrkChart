@@ -55,18 +55,9 @@
 
     <div id="song_selection" class="control mb-2">
       <h6>Song</h6>
-      <!-- <select id="song_select">
-        <option value="call_me_al.json">You Can Call Me Al</option>
-        <option value="sledgehammer_2_rounds.json">Sledgehammer</option>
-        <option value="poker_face.json">Poker Face</option>
-        <option value="jolene.json">Jolene</option>
-        <option value="helplessness_blues.json">Helplessness Blues</option>
-        <option value="she_said.json">She Said She Said</option>
-        <option value="short_skirt.json">Short Skirt, Long Jacket</option>
-      </select> -->
-      <select v-model="selected" id="song_select">
+      <select v-model="selected" id="song_select" @change="update_chart">
         <option disabled value="">Please select one</option>
-        <option v-for="opt in options">{{opt}}</option>
+        <option v-for="opt in data" :value="opt['SONG_ID']">{{opt['PARENT_SONG']}}</option>
       </select>
 
     </div>
@@ -112,9 +103,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous"></script> -->
     <script src="https://d3js.org/d3.v2.js"></script>
+    <script src="index.js"></script>
     <script src="script.js"></script>
     <script src="tooltip.js"></script>
-    <script src="index.js"></script>
+
     <!-- <script> 
     window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
     Modernizr.load({

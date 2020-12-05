@@ -4,11 +4,21 @@ var app = new Vue({
   //   message: 'Hello Vue!'
   // }
 })
-
-new Vue({
-  el: '#song_select',
-  data: {
-    selected: '',
-    options: [1, 2, 3, 4, 5, 6, 7]
-  }
+fetch('http://alukafoundation.org/api/GetSongsList').then(res => res.json()).then(data => {
+  new Vue({
+    el: '#song_select',
+    data: {
+      selected: 1,
+      data: data
+    },
+    methods: {
+      update_chart() {
+        var songFile;
+        songFile = $(this.$el).val();
+        return d3.json("http://alukafoundation.org/api/GetSongsByParent?id=" + songFile, function (json) {
+          return myNetwork.updateData(json);
+        });
+      }
+    }
+  })
 })

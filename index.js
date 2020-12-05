@@ -1,3 +1,5 @@
+var myNetwork;
+
 (function () {
   var Network, RadialPlacement, activate, root;
 
@@ -453,7 +455,7 @@
   };
 
   $(function () {
-    var myNetwork;
+
     myNetwork = Network();
     d3.selectAll("#layouts a").on("click", function (d) {
       var newLayout;
@@ -473,19 +475,19 @@
       activate("sorts", newSort);
       return myNetwork.toggleSort(newSort);
     });
-    $("#song_select").on("change", function (e) {
-      var songFile;
-      songFile = $(this).val();
-      return d3.json("http://alukafoundation.org/api/GetSongsByParent?id=" + songFile, function (json) {
-        return myNetwork.updateData(json);
-      });
-    });
+    // $("#song_select").on("change", function (e) {
+    //   var songFile;
+    //   songFile = $(this).val();
+    //   return d3.json("http://alukafoundation.org/api/GetSongsByParent?id=" + songFile, function (json) {
+    //     return myNetwork.updateData(json);
+    //   });
+    // });
     $("#search").keyup(function () {
       var searchTerm;
       searchTerm = $(this).val();
       return myNetwork.updateSearch(searchTerm);
     });
-    return d3.json("http://alukafoundation.org/api/GetSongs", function (json) {
+    return d3.json("http://alukafoundation.org/api/GetSongsByParent?id=1", function (json) {
       return myNetwork("#chart", json);
     });
   });
